@@ -22,6 +22,9 @@ export default function AppNavbar({...props}: IAppNavbarProps) {
                     </Typography>
 
                     <Box sx={{display: {xs: 'none', sm: 'block'}}}>
+                        <Button sx={{color: '#fff'}} onClick={() => navigate("/workers")}>
+                            Сотрудники
+                        </Button>
                         <Button sx={{color: '#fff'}} onClick={() => navigate("/professions")}>
                             Должности
                         </Button>
