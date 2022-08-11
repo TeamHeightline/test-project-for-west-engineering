@@ -1,13 +1,4 @@
-import {
-    Box,
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
-    TextField
-} from "@mui/material";
+import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField} from "@mui/material";
 import {BoxProps} from "@mui/material/Box/Box";
 import {useAppDispatch, useAppSelector} from "../../../RootStore";
 import {closeCreateProfessionDialog, setNewProfessionName} from "../Store/professions-slice";

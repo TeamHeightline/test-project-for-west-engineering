@@ -25,6 +25,9 @@ export default function AppNavbar({...props}: IAppNavbarProps) {
                         <Button sx={{color: '#fff'}} onClick={() => navigate("/professions")}>
                             Должности
                         </Button>
+                        <Button sx={{color: '#fff'}} onClick={() => navigate("/levels-of-education")}>
+                            Образование
+                        </Button>
                     </Box>
                 </Toolbar>
             </AppBar>

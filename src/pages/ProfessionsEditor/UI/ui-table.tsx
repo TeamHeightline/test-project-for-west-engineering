@@ -48,7 +48,7 @@ export default function UIProfessionsTable() {
                 <DataGrid
                     rows={professions}
                     columns={columns}
-                    // experimentalFeatures={{newEditingApi: true}}
+                   
                     pageSize={50}
                     rowsPerPageOptions={[50]}
                     experimentalFeatures={{newEditingApi: true}}

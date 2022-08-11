@@ -3,6 +3,7 @@ import {Route, Routes} from "react-router-dom";
 import ProfessionsEditor from "./pages/ProfessionsEditor/UI/professions-editor";
 import AppNavbar from "./shared/Navbar/navbar";
 import {Box} from "@mui/material";
+import LevelOfEducationEditor from "./pages/LevelsOfEducationEditor/UI/levels-of-education-editor";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
             <Box sx={{mt: 6}}>
                 <Routes>
                     <Route path={"professions"} element={<ProfessionsEditor/>}/>
+                    <Route path={'levels-of-education'} element={<LevelOfEducationEditor/>}/>
                 </Routes>
             </Box>
         </div>
