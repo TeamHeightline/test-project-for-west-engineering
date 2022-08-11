@@ -1,10 +1,11 @@
 import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
 import {BoxProps} from "@mui/material/Box/Box";
 import CloseIcon from "@mui/icons-material/Close";
-import AddIcon from "@mui/icons-material/Add";
 import {useAppDispatch, useAppSelector} from "../../../RootStore";
 import {closeDeleteProfessionDialog} from "../Store/professions-slice";
 import {deleteProfession, loadProfessions} from "../Store/async-actions";
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 interface IUIDeleteProfessionDialogProps extends BoxProps {
 
@@ -40,7 +41,7 @@ export default function UIDeleteProfessionDialog({...props}: IUIDeleteProfession
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} startIcon={<CloseIcon/>} color={"info"}>Отмена</Button>
-                    <Button onClick={handleDeleteProfession} startIcon={<AddIcon/>} color={"error"}>Удалить</Button>
+                    <Button onClick={handleDeleteProfession} startIcon={<DeleteIcon/>} color={"error"}>Удалить</Button>
                 </DialogActions>
             </Dialog>
         </Box>
