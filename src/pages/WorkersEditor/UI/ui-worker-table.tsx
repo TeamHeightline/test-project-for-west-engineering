@@ -3,6 +3,7 @@ import {BoxProps} from "@mui/material/Box/Box";
 import {useAppDispatch, useAppSelector} from "../../../RootStore";
 import {DataGrid, GridColumns} from "@mui/x-data-grid";
 import {IWorkersWithNames, openEditWorkerDialog, setSelectedWorker} from "../Store/workers-editor-slice";
+import UIActionButtons from "./ui-action-buttons";
 
 interface IUIWorkerTableProps extends BoxProps {
 
@@ -38,6 +39,7 @@ export default function UIWorkerTable({...props}: IUIWorkerTableProps) {
 
     return (
         <Box {...props}>
+            <UIActionButtons/>
             <Box sx={{height: 450, width: 800, mt: 1}}>
                 <DataGrid
                     rows={workers}

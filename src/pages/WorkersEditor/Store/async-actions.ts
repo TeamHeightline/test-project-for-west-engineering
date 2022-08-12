@@ -12,3 +12,18 @@ export const updateWorker = createAsyncThunk('workers-editor/updateWorker',
                 return res.data
             })
     })
+
+
+export const createWorker = createAsyncThunk('workers-editor/createWorker', async (data: { name: string, level_of_education_id: number | null, profession_id: number | null }) => {
+    return axiosClient.post("/workers/create", data)
+        .then((res) => {
+            return res.data
+        })
+})
+
+export const deleteWorker = createAsyncThunk('workers-editor/deleteWorker', async (data: { id: number }) => {
+    return axiosClient.post("/workers/delete", data)
+        .then((res) => {
+            return res.data
+        })
+})

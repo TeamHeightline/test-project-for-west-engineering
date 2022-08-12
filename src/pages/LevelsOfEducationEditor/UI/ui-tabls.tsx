@@ -42,7 +42,7 @@ export default function UILevelsOfEducationTable({...props}: IUILevelsOfEducatio
                             onClick={handleDeleteProfession}>
                         Удалить уровень обра...
                     </Button>
-                    <Button color={"info"} variant={"contained"} startIcon={<AddIcon/>}
+                    <Button color={"success"} variant={"outlined"} startIcon={<AddIcon/>}
                             onClick={handleCreateProfession}>
                         Добавить уровень обра...
                     </Button>

@@ -7,6 +7,8 @@ import UIWorkerTable from "./ui-worker-table";
 import UIEditWorkerDialog from "./ui-edit-worker-dialog";
 import {loadLevels} from "../../LevelsOfEducationEditor/Store/async-actions";
 import {loadProfessions} from "../../ProfessionsEditor/Store/async-actions";
+import UICreateWorkerDialog from "./ui-create-worker-dialog";
+import UIDeleteWorkerDialog from "./ui-delete-worker-dialog";
 
 interface IUIWorkerEditorProps extends BoxProps {
 
@@ -26,6 +28,8 @@ export default function UIWorkerEditor({...props}: IUIWorkerEditorProps) {
             <Stack alignItems={"center"}>
                 <UIWorkerTable/>
                 <UIEditWorkerDialog/>
+                <UICreateWorkerDialog/>
+                <UIDeleteWorkerDialog/>
             </Stack>
         </Box>
     )

@@ -38,7 +38,7 @@ export default function UIProfessionsTable() {
                             onClick={handleDeleteProfession}>
                         Удалить должность
                     </Button>
-                    <Button color={"info"} variant={"contained"} startIcon={<AddIcon/>}
+                    <Button color={"success"} variant={"outlined"} startIcon={<AddIcon/>}
                             onClick={handleCreateProfession}>
                         Добавить должность
                     </Button>
@@ -48,7 +48,7 @@ export default function UIProfessionsTable() {
                 <DataGrid
                     rows={professions}
                     columns={columns}
-                   
+
                     pageSize={50}
                     rowsPerPageOptions={[50]}
                     experimentalFeatures={{newEditingApi: true}}

@@ -16,6 +16,7 @@ function App() {
                     <Route path={"professions"} element={<ProfessionsEditor/>}/>
                     <Route path={'levels-of-education'} element={<LevelOfEducationEditor/>}/>
                     <Route path={'workers'} element={<UIWorkerEditor/>}/>
+                    <Route index element={<UIWorkerEditor/>}/>
                 </Routes>
             </Box>
         </div>
