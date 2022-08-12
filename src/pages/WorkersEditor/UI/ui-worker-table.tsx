@@ -1,7 +1,8 @@
 import {Box} from "@mui/material";
 import {BoxProps} from "@mui/material/Box/Box";
-import {useAppSelector} from "../../../RootStore";
+import {useAppDispatch, useAppSelector} from "../../../RootStore";
 import {DataGrid, GridColumns} from "@mui/x-data-grid";
+import {IWorkersWithNames, openEditWorkerDialog, setSelectedWorker} from "../Store/workers-editor-slice";
 
 interface IUIWorkerTableProps extends BoxProps {
 
@@ -16,7 +17,25 @@ const columns: GridColumns = [
 ];
 
 export default function UIWorkerTable({...props}: IUIWorkerTableProps) {
+    const dispatch = useAppDispatch()
+
+
     const workers = useAppSelector(state => state.workersEditor.workers)
+
+    const doubleClickHandler = (event: { row: IWorkersWithNames; }) => {
+        if (event?.row?.id) {
+            dispatch(setSelectedWorker(event.row))
+            dispatch(openEditWorkerDialog())
+        }
+    }
+
+    const clickHandler = (event: { row: IWorkersWithNames; }) => {
+        if (event?.row?.id) {
+            dispatch(setSelectedWorker(event.row))
+        }
+    }
+
+
     return (
         <Box {...props}>
             <Box sx={{height: 450, width: 800, mt: 1}}>
@@ -26,10 +45,8 @@ export default function UIWorkerTable({...props}: IUIWorkerTableProps) {
                     pageSize={50}
                     rowsPerPageOptions={[50]}
                     experimentalFeatures={{newEditingApi: true}}
-                    // onSelectionModelChange={(newSelectionModel) => {
-                    //     dispatch(setSelectedProfessionId(Number(newSelectionModel[0]) || null))
-                    // }}
-
+                    onRowDoubleClick={doubleClickHandler}
+                    onRowClick={clickHandler}
                 />
             </Box>
         </Box>
