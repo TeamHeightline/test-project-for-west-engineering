@@ -8,7 +8,7 @@ import {
     openDeleteProfessionDialog,
     setSelectedProfessionId
 } from "../Store/professions-slice";
-import {updateProfession} from "../Store/async-actions";
+import {loadProfessions, updateProfession} from "../Store/async-actions";
 
 const columns: GridColumns = [
     {field: 'id', headerName: 'ID', width: 100, editable: false},
@@ -53,7 +53,9 @@ export default function UIProfessionsTable() {
                     rowsPerPageOptions={[50]}
                     experimentalFeatures={{newEditingApi: true}}
                     processRowUpdate={async (newRow) => {
-                        return dispatch(updateProfession({id: newRow.id, name: newRow.name})).unwrap()
+                        const new_row = await dispatch(updateProfession({id: newRow.id, name: newRow.name})).unwrap()
+                        dispatch(loadProfessions())
+                        return new_row
                     }}
                     onSelectionModelChange={(newSelectionModel) => {
                         dispatch(setSelectedProfessionId(Number(newSelectionModel[0]) || null))

@@ -2,7 +2,7 @@ import {Box, Button, Stack} from "@mui/material";
 import {BoxProps} from "@mui/material/Box/Box";
 import {DataGrid, GridColumns} from "@mui/x-data-grid";
 import {useAppDispatch, useAppSelector} from "../../../RootStore";
-import {updateLevel} from "../Store/async-actions";
+import {loadLevels, updateLevel} from "../Store/async-actions";
 import {
     openCreateLevelsDialog,
     openDeleteLevelsDialog,
@@ -56,7 +56,9 @@ export default function UILevelsOfEducationTable({...props}: IUILevelsOfEducatio
                     rowsPerPageOptions={[50]}
                     experimentalFeatures={{newEditingApi: true}}
                     processRowUpdate={async (newRow) => {
-                        return dispatch(updateLevel({id: newRow.id, name: newRow.name})).unwrap()
+                        const new_row = await dispatch(updateLevel({id: newRow.id, name: newRow.name})).unwrap()
+                        dispatch(loadLevels())
+                        return new_row
                     }}
                     onSelectionModelChange={(newSelectionModel) => {
                         dispatch(setSelectedLevelsId(Number(newSelectionModel[0]) || null))

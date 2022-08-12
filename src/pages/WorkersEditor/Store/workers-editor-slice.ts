@@ -12,8 +12,8 @@ export interface IWorkers {
     "updated_at": string,
     "education": ILevelsOfEducation,
     "prfession": IProfession,
-    profession_id: number,
-    level_of_education_id: number
+    profession_id: number | null,
+    level_of_education_id: number | null
 }
 
 export interface IWorkersWithNames extends IWorkers {
@@ -54,6 +54,11 @@ const workersEditorSlice = createSlice({
 
         is_open_delete_worker_dialog: false,
 
+
+        is_open_professions_editor_with_selector: false,
+
+        is_open_levels_of_education_editor_with_selector: false,
+
     },
     reducers: {
         openEditWorkerDialog: (state) => {
@@ -71,12 +76,12 @@ const workersEditorSlice = createSlice({
                 state.selected_worker.name = action.payload;
             }
         },
-        setSelectedWorkerProfession: (state, action: PayloadAction<number>) => {
+        setSelectedWorkerProfession: (state, action: PayloadAction<number | null>) => {
             if (state.selected_worker) {
                 state.selected_worker.profession_id = action.payload;
             }
         },
-        setSelectedWorkerLevelOfEducation: (state, action: PayloadAction<number>) => {
+        setSelectedWorkerLevelOfEducation: (state, action: PayloadAction<number | null>) => {
             if (state.selected_worker) {
                 state.selected_worker.level_of_education_id = action.payload;
             }
@@ -91,10 +96,10 @@ const workersEditorSlice = createSlice({
         setCreateWorkerName: (state, action: PayloadAction<string>) => {
             state.worker_for_create.name = action.payload;
         },
-        setCreateWorkerProfession: (state, action: PayloadAction<number>) => {
+        setCreateWorkerProfession: (state, action: PayloadAction<number | null>) => {
             state.worker_for_create.profession_id = action.payload;
         },
-        setCreateWorkerLevelOfEducation: (state, action: PayloadAction<number>) => {
+        setCreateWorkerLevelOfEducation: (state, action: PayloadAction<number | null>) => {
             state.worker_for_create.level_of_education_id = action.payload;
         },
 
@@ -103,7 +108,22 @@ const workersEditorSlice = createSlice({
         },
         closeDeleteWorkerDialog: (state) => {
             state.is_open_delete_worker_dialog = false;
+        },
+
+        openProfessionsEditorWithSelector: (state) => {
+            state.is_open_professions_editor_with_selector = true;
+        },
+        closeProfessionsEditorWithSelector: (state) => {
+            state.is_open_professions_editor_with_selector = false;
+        },
+
+        openLevelsOfEducationEditorWithSelector: (state) => {
+            state.is_open_levels_of_education_editor_with_selector = true;
+        },
+        closeLevelsOfEducationEditorWithSelector: (state) => {
+            state.is_open_levels_of_education_editor_with_selector = false;
         }
+
 
     },
     extraReducers: {
@@ -170,5 +190,9 @@ export const {
     setCreateWorkerProfession,
     setCreateWorkerLevelOfEducation,
     openDeleteWorkerDialog,
-    closeDeleteWorkerDialog
+    closeDeleteWorkerDialog,
+    openProfessionsEditorWithSelector,
+    closeProfessionsEditorWithSelector,
+    openLevelsOfEducationEditorWithSelector,
+    closeLevelsOfEducationEditorWithSelector
 } = workersEditorSlice.actions;

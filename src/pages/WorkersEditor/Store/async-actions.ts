@@ -6,7 +6,7 @@ export const loadWorkers = createAsyncThunk('workers-editor/loadWorkers', async 
 })
 
 export const updateWorker = createAsyncThunk('workers-editor/updateWorker',
-    async (data: { id: number, name: string, level_of_education_id: number, profession_id: number }) => {
+    async (data: { id: number, name: string, level_of_education_id: number | null, profession_id: number | null }) => {
         return axiosClient.post("/workers/update", data)
             .then((res) => {
                 return res.data
